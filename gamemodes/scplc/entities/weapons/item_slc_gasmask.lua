@@ -50,16 +50,3 @@ end*/
 function SWEP:OnSelect()
 	self:SetEnabled( !self:GetEnabled() )
 end
-
-if CLIENT then
-	local overlay = GetMaterial( "slc/misc/gasmask.png" )
-	hook.Add( "SLCScreenMod", "GasMask", function( clr )
-		local ply = LocalPlayer()
-		local wep = ply:GetWeapon( "item_slc_gasmask" )
-
-		if IsValid( wep ) and wep:GetEnabled() then
-			render.SetMaterial( overlay )
-			render.DrawScreenQuad()
-		end
-	end )
-end

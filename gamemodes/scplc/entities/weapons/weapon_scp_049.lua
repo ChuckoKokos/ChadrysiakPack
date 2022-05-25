@@ -15,17 +15,17 @@ local function translate_zombie_model( ply )
 	local class = ply:GetProperty( "last_class" )
 	
 	if team == TEAM_CLASSD or class == CLASSES.CIAGENT then
-		return "models/player/alski/scp049-2.mdl", math.random( 0, 4 )
+		return "models/player/gothic/pc_hero.mdl", math.random( 0, 4 )
 	elseif team == TEAM_MTF then
 		local random = math.random( 1, 2 )
 
 		if random == 1 then
-			return "models/player/alski/scp049-2mtf.mdl", math.random( 0, 4 )
+			return "models/player/gothic/mud.mdl", math.random( 0, 4 )
 		else
-			return "models/player/alski/scp049-2mtf2.mdl", math.random( 0, 4 )
+			return "models/jajoff/spc/gothic/diego.mdl", math.random( 0, 4 )
 		end
 	elseif team == TEAM_SCI then
-		return "models/player/alski/scp049-2_scientist.mdl", math.random( 0, 4 )
+		return "models/jajoff/spc/gothic/diego.mdl", math.random( 0, 4 )
 	end
 end
 
@@ -361,7 +361,7 @@ function SWEP:DrawSCPHUD()
 	end
 end
 
-AddSounds( "SCP049.Attack", "scp_lc/scp/049/attack%i.ogg", 100, 1, 100, CHAN_STATIC, 0, 7 )
+AddSounds( "SCP049.Attack", "xardas/attack%i.mp3", 100, 1, 100, CHAN_STATIC, 1, 2 )
 sound.Add{
 	name = "SCP049.Remove714",
 	sound = "scp_lc/scp/049/remove714_1.ogg",
@@ -452,15 +452,15 @@ DefineUpgradeSystem( "scp049", {
 	upgrades = {
 		{ name = "cure1", cost = 2, req = {}, reqany = false, pos = { 1, 1 }, mod = { def = 0.6 }, active = false },
 		{ name = "cure2", cost = 3, req = { "cure1" }, reqany = false, pos = { 1, 2 }, mod = { heal = 300 }, active = false },
-		{ name = "merci", cost = 5, req = { "cure2" }, reqany = false, pos = { 1, 3 }, mod = { cd = 2.5 }, active = true },
+		{ name = "merci", cost = 4, req = { "cure2" }, reqany = false, pos = { 1, 3 }, mod = { cd = 2.5 }, active = true },
 
 		{ name = "symbiosis1", cost = 1, req = {}, reqany = false, pos = { 2, 1 }, mod = { sh = 0.1 }, active = false },
 		{ name = "symbiosis2", cost = 3, req = { "symbiosis1" }, reqany = false, pos = { 2, 2 }, mod = { sh = 0.15, zh = 0.1 }, active = false },
-		{ name = "symbiosis3", cost = 5, req = { "symbiosis2" }, reqany = false, pos = { 2, 3 }, mod = { sh = 0.20, zh = 0.2 }, active = false },
+		{ name = "symbiosis3", cost = 3, req = { "symbiosis2" }, reqany = false, pos = { 2, 3 }, mod = { sh = 0.20, zh = 0.2 }, active = false },
 
 		{ name = "hidden", cost = 3, req = {}, reqany = false, pos = { 3, 1 }, mod = {}, active = false },
-		{ name = "trans", cost = 5, req = { "hidden" }, reqany = false, pos = { 3, 2 }, mod = { hp = 0.15, steal = 0.2 }, active = false },
-		{ name = "rm", cost = 7, req = { "trans", "doc2" }, reqany = true, pos = { 3, 3 }, mod = {}, active = false },
+		{ name = "trans", cost = 3, req = { "hidden" }, reqany = false, pos = { 3, 2 }, mod = { hp = 0.15, steal = 0.2 }, active = false },
+		{ name = "rm", cost = 5, req = { "trans", "doc2" }, reqany = true, pos = { 3, 3 }, mod = {}, active = false },
 
 		{ name = "doc1", cost = 1, req = {}, reqany = false, pos = { 4, 1 }, mod = { surgery_time = 5 }, active = false },
 		{ name = "doc2", cost = 4, req = { "doc1" }, reqany = false, pos = { 4, 2 }, mod = { surgery_time = 10 }, active = false },

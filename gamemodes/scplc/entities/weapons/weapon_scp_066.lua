@@ -33,6 +33,7 @@ function SWEP:PrimaryAttack()
 
 		if SERVER then
 			self.Owner:EmitSound( "SCP066.Eric" )
+			self.Owner:StopSound( "SCP066.Music" )
 		end
 	else
 		self.NextAttack = CurTime() + self.Delay2
@@ -234,10 +235,10 @@ sound.Add( {
 sound.Add( {
 	name = "SCP066.Music",
 	channel = CHAN_STATIC,
-	volume = 1.0,
+	volume = 3.0,
 	level = 511,
 	pitch = 100,
-	sound = "scp_lc/scp/066/beethoven.ogg"
+	sound = "ulubionamuzykakubeja/muzykakubeja.mp3"
 } )
 
 DefineUpgradeSystem( "scp066", {

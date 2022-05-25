@@ -207,7 +207,7 @@ function SWEP:Think()
 
 							dmg:SetAttacker( owner )
 							dmg:SetInflictor( owner )
-							dmg:SetDamage( 50 + self:GetUpgradeMod( "dash_dmg", 0 ) )
+							dmg:SetDamage( 70 + self:GetUpgradeMod( "dash_dmg", 0 ) )
 							dmg:SetDamageType( DMG_SLASH )
 
 							ent:TakeDamageInfo( dmg )
@@ -817,13 +817,13 @@ DefineUpgradeSystem( "scp24273", {
 		{ name = "dash2", cost = 3, req = { "dash1" }, reqany = false,  pos = { 1, 2 }, mod = { dash_pspeed = 0.15, dash_ptime = 0.5 }, active = false },
 		{ name = "dash3", cost = 4, req = { "dash2" }, reqany = false,  pos = { 1, 3 }, mod = { dash_dmg = 50 }, active = false },
 
-		{ name = "mc11", cost = 1, req = {}, block = { "mc21" }, reqany = false,  pos = { 2, 1 }, mod = { mc_dur = 10, mc_cd = 20 }, active = false },
-		{ name = "mc12", cost = 3, req = { "mc11" }, reqany = false,  pos = { 2, 2 }, mod = { mc_dur = 20, mc_cd = 45 }, active = false },
-		{ name = "mc13", cost = 6, req = { "mc12", "mc22" }, block = { "mc23" }, reqany = true,  pos = { 2, 3 }, mod = { mc_dist = 1000 }, active = false }, --kill gives mc cd
+		{ name = "mc11", cost = 1, req = {}, block = { "mc21" }, reqany = false,  pos = { 2, 1 }, mod = { mc_dur = 8, mc_cd = 15 }, active = false },
+		{ name = "mc12", cost = 3, req = { "mc11" }, reqany = false,  pos = { 2, 2 }, mod = { mc_dur = 15, mc_cd = 30 }, active = false },
+		{ name = "mc13", cost = 4, req = { "mc12", "mc22" }, block = { "mc23" }, reqany = true,  pos = { 2, 3 }, mod = { mc_dist = 1000 }, active = false }, --kill gives mc cd
 
-		{ name = "mc21", cost = 1, req = {}, block = { "mc11" }, reqany = false,  pos = { 3, 1 }, mod = { mc_dur = -5, mc_cd = -10 }, active = false },
-		{ name = "mc22", cost = 3, req = { "mc21" }, reqany = false,  pos = { 3, 2 }, mod = { mc_dur = -10, mc_cd = -15 }, active = false },
-		{ name = "mc23", cost = 6, req = { "mc22", "mc12" }, block = { "mc13" }, reqany = true,  pos = { 3, 3 }, mod = { mc_dist = 500 }, active = false }, --kill gives hp
+		{ name = "mc21", cost = 1, req = {}, block = { "mc11" }, reqany = false,  pos = { 3, 1 }, mod = { mc_dur = -3, mc_cd = -10 }, active = false },
+		{ name = "mc22", cost = 3, req = { "mc21" }, reqany = false,  pos = { 3, 2 }, mod = { mc_dur = -6, mc_cd = -15 }, active = false },
+		{ name = "mc23", cost = 4, req = { "mc22", "mc12" }, block = { "mc13" }, reqany = true,  pos = { 3, 3 }, mod = { mc_dist = 500 }, active = false }, --kill gives hp
 
 		{ name = "mc3", cost = 2, req = { "mc21" }, reqany = false,  pos = { 4, 2 }, mod = { mc_def = 0.5 }, active = false },
 

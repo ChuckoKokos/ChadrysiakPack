@@ -99,7 +99,7 @@ function SWEP:PrimaryAttack()
 
 							dmg:SetAttacker( owner )
 							dmg:SetDamageType( DMG_GENERIC )
-							dmg:SetDamage( 20 + ( self:GetUpgradeMod( "prim_dmg" ) or 0 ) )
+							dmg:SetDamage( 40 + ( self:GetUpgradeMod( "prim_dmg" ) or 0 ) )
 
 							ent:TakeDamageInfo( dmg )
 
