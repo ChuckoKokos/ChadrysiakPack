@@ -364,10 +364,10 @@ function GM:SpawnItems()
 		---------------------------------------------------------------------------]]
 		SpawnItemGeneric( "weapon_slc_pc", SPAWN_PARTICLE_CANNON, -1, post )
 
-		SpawnItemGeneric( { "cw_deagle", "cw_makarov", "cw_mr96" }, SPAWN_PISTOLS, -1, post )
+		SpawnItemGeneric( { "cw_p99", "cw_mr96" }, SPAWN_PISTOLS, -1, post )
 		SpawnItemGeneric( { "cw_g36c", "cw_ump45", "cw_mp5" }, SPAWN_SMGS, -1, post )
-		SpawnItemGeneric( { "cw_ak74", "cw_ar15", "cw_m14", "cw_scarh", "cw_l85a2" }, SPAWN_RIFLES, -1, post )
-		SpawnItemGeneric( { "cw_shorty", "cw_m3super90" }, SPAWN_PUMP, -1, post )
+		SpawnItemGeneric( { "cw_mp5", "cw_ar15", "cw_m14", "cw_scarh", "cw_l85a2" }, SPAWN_RIFLES, -1, post )
+		SpawnItemGeneric( { "cw_m3super90" }, SPAWN_PUMP, -1, post )
 		SpawnItemGeneric( "cw_l115", SPAWN_SNIPER, -1, post )
 
 		SpawnItemGeneric( "weapon_crowbar", SPAWN_MELEE, 3, post )

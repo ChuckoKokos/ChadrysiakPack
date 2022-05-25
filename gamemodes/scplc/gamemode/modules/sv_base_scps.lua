@@ -90,27 +90,27 @@ To get registered SCP:
 
 ---------------------------------------------------------------------------]]
 
+
 hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
-	RegisterSCP( "SCP023", "models/Novux/023/Novux_SCP-023.mdl", "weapon_scp_023", {
+	RegisterSCP( "SCP023", "models/tsbb/animals/rabbit2.mdl", "weapon_scp_023", {
 		jump_power = 200,
 		prep_freeze = true,
 	}, {
-		base_health = 2150,
-		max_health = 2150,
+		base_health = 1015,
+		max_health = 1515,			
 		base_speed = 185,
 		run_speed = 185,
 	}, nil, function( ply )
-		ply:SetRenderMode( RENDERMODE_TRANSCOLOR )
 		ply:SetCustomCollisionCheck( true )
 	end )
 
-	RegisterSCP( "SCP049", "models/vinrax/player/scp049_player.mdl", "weapon_scp_049", {
+	RegisterSCP( "SCP049", "models/authoretex/gothic/xardas.mdl", "weapon_scp_049", {
 		jump_power = 200,
 		allow_chat = true,
 		can_interact = true,
 	}, {
-		base_health = 2000,
-		max_health = 2000,
+		base_health = 1769,
+		max_health = 1800,				
 		base_speed = 185,
 		run_speed = 185,
 	} )
@@ -125,8 +125,8 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		disable_overload = true,
 		reward_override = 3,
 	}, {
-		base_health = 800,
-		max_health = 800,
+		base_health = 700,			
+		max_health = 700,
 		base_speed = 165,
 		run_speed = 165,
 	}, function( ply, basestats, pos, scp049, hp, speed, damage, ls, model, skin )
@@ -157,11 +157,11 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 	end )
 
 	RegisterSCP( "SCP058", "models/player/alski/scp/scp_058.mdl", "weapon_scp_058", {
-		jump_power = 200,
+		jump_power = 215,
 		prep_freeze = true,
 	}, {
-		base_health = 2600,
-		max_health = 2600,
+		base_health = 2350,
+		max_health = 2350,			
 		base_speed = 170,
 		run_speed = 170,
 	} )
@@ -171,8 +171,8 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		no_ragdoll = true,
 		prep_freeze = true,
 	}, {
-		base_health = 3500,
-		max_health = 3500,
+		base_health = 2500,
+		max_health = 2500,					
 		base_speed = 160,
 		run_speed = 160,
 	} )
@@ -182,8 +182,8 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		no_terror = true,
 		no_damage_forces = true,
 	}, {
-		base_health = 3000,
-		max_health = 3000,
+		base_health = 2200,
+		max_health = 2300,					
 		base_speed = 125,
 		run_speed = 125,
 	} )
@@ -193,7 +193,7 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		no_damage_forces = true,
 	}, {
 		base_health = 2450,
-		max_health = 2450,
+		max_health = 2450,			
 		base_speed = 155,
 		run_speed = 155,
 	}, nil, function( ply )
@@ -205,8 +205,8 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		no_ragdoll = true,
 		no_damage_forces = true,
 	}, {
-		base_health = 6000,
-		max_health = 6000,
+		base_health = 4000,
+		max_health = 4000,					
 		base_speed = 550,
 		run_speed = 550,
 	} )
@@ -214,10 +214,9 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 	RegisterSCP( "SCP457", "models/player/corpse1.mdl", "weapon_scp_457", {
 		jump_power = 200,
 		no_ragdoll = true,
-		//no_draw = true,
 	}, {
-		base_health = 2300,
-		max_health = 2300,
+		base_health = 1755,				
+		max_health = 1755,
 		base_speed = 165,
 		run_speed = 165,
 	} )
@@ -227,8 +226,8 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		no_ragdoll = true,
 		no_damage_forces = true,
 	}, {
-		base_health = 7000,
-		max_health = 7000,
+		base_health = 4600,				
+		max_health = 4600,
 		base_speed = 160,
 		run_speed = 160,
 	} )
@@ -237,9 +236,9 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		jump_power = 200,
 		prep_freeze = true,
 	}, {
-		base_health = 4200,
-		max_health = 4200,
-		base_speed = 170,
+		base_health = 2200,
+		max_health = 2200,					
+		base_speed = 170,	
 		run_speed = 170,
 	} )
 
@@ -249,8 +248,8 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		allow_chat = true,
 		no_damage_forces = true,
 	}, {
-		base_health = 2600,
-		max_health = 2600,
+		base_health = 2200,
+		max_health = 2200,
 		base_speed = 175,
 		run_speed = 175,
 	} )
@@ -259,7 +258,7 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		jump_power = 200,
 	}, {
 		base_health = 1250,
-		max_health = 1250,
+		max_health = 1250,			
 		base_speed = 190,
 		run_speed = 190,
 	} )
@@ -269,8 +268,8 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		prep_freeze = true,
 		no_ragdoll = true,
 	}, {
-		base_health = 3100,
-		max_health = 3100,
+		base_health = 2800,
+		max_health = 2800,			
 		base_speed = 160,
 		run_speed = 160,
 	} )
@@ -279,8 +278,8 @@ hook.Add( "RegisterSCP", "RegisterBaseSCPs", function()
 		jump_power = 200,
 		prep_freeze = true
 	}, {
-		base_health = 1800,
-		max_health = 1800,
+		base_health = 1400,
+		max_health = 1400,				
 		base_speed = 225,
 		run_speed = 225,
 	}, nil, function( ply )

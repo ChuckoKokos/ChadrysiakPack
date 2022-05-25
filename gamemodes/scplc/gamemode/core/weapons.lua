@@ -22,7 +22,7 @@ CW 2.0 DMG Mod
 local CW_WEP_DMG = {
 	--pistol
 	cw_fiveseven = 20,
-	cw_makarov = 18,
+	cw_p99 = 18,
 	cw_deagle = 30,
 	cw_mr96 = 45,
 

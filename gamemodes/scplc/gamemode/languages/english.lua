@@ -199,6 +199,7 @@ lang.view_cat = {
 	mtf_ntf = "MTF Epsilon-11",
 	mtf_alpha = "MTF Alpha-1",
 	ci = "Chaos Insurgency",
+	bandits = "Bandits"
 }
 
 --[[-------------------------------------------------------------------------
@@ -426,6 +427,7 @@ teams.SCI = "Scientists"
 teams.MTF = "MTF"
 teams.CI = "CI"
 teams.SCP = "SCP"
+teams.BANDITS = "Bandits"
 
 --[[-------------------------------------------------------------------------
 Classes
@@ -452,9 +454,14 @@ classes.SCP3199 = "SCP 3199"
 classes.SCP24273 = "SCP 2427-3"
 
 classes.classd = "Class D"
+classes.heisenberg = "Heisenberg"
+classes.jesse = "Jesse Pinkman"
 classes.veterand = "Class D Veteran"
 classes.kleptod = "Class D Kleptomaniac"
 classes.ciagent = "CI Agent"
+classes.scoucik = "scoucik"
+classes.saul = "Jim McGill"
+classes.sam = "Samuel Rodrigues"
 
 classes.sciassistant = "Scientist Assistant"
 classes.sci = "Scientist"
@@ -480,6 +487,11 @@ classes.alpha1 = "MTF Alpha-1"
 classes.alpha1sniper = "MTF Alpha-1 Marksman"
 classes.ci = "Chaos Insurgency"
 classes.cicom = "Chaos Insurgency Commander"
+classes.chadrysiaczek = "Chadrysiaczek"
+classes.raiden = "Raiden"
+
+classes.bandit = "Bandit"
+classes.banditasval = "Expert Bandit"
 
 local classes_id = {}
 lang.CLASSES_ID = classes_id
@@ -517,18 +529,28 @@ local generic_scp_friendly = [[- Escape from the facility
 - You may cooperate with humans
 - Cooperate with other SCPs]]
 
+local generic_bandit = [[- Burn and loot the facility
+- Kill and make alliances as you wish
+- Have fun, cyka]]
+
 lang.CLASS_OBJECTIVES = {
 	classd = generic_classd,
 
 	veterand = generic_classd,
 
 	kleptod = generic_classd,
+	
+	jesse = generic_classd,
 
 	ciagent = [[- Escort Class D members
 - Avoid staff and SCP objects
 - Cooperate with others]],
 
 	sciassistant = generic_sci,
+	
+	heisenberg = [[- Protect Jessse at ALL cost,
+	-Help Jesse escape from the facility,
+	-Deceive MTFs to smuggle Jesse out of the facility]],
 
 	sci = generic_sci,
 
@@ -586,13 +608,17 @@ lang.CLASS_OBJECTIVES = {
 - Stop SCPs and Class D
 - You are authorized to ]].."[REDACTED]",
 
-	ci = [[- Help Class D Personnel
-- Eliminate all facility staff
+	ci = [[- Rescue Class D Personnel
+- Sabotage the foundation in any way possible, if the odds are too overwhelming, you may retreat
 - Listen to your supervisor]],
 
-	cicom = [[- Help Class D Personnel
-- Eliminate all facility staff
+	cicom = [[- Rescue Class D Personnel
+- Sabotage the foundation in any way possible, if the odds are too overwhelming, you may retreat
 - Give orders to other CIs]],
+
+bandit = generic_bandit,
+
+banditasval = generic_bandit,
 
 	SCP023 = generic_scp,
 
@@ -925,7 +951,7 @@ Can escort: Class D
 Escorted by: None
 
 Overview:
-Chaos Insurgency unit. Get into facility and help Class D and kill facility staff.
+Chaos Insurgency unit. Get into facility and help Class D, if there are no Class Ds to rescue then sabotage the foundation in any way possible. If you think odds are too overwhelming, you may retreat.
 ]],
 
 	cicom = [[Difficulty: Medium
@@ -937,7 +963,7 @@ Can escort: Class D
 Escorted by: None
 
 Overview:
-Chaos Insurgency unit. Higher combat potential. Get into facility, help Class D and kill facility staff.
+Chaos Insurgency unit. Higher combat potential. Get into facility and help Class D, if there are no Class Ds to rescue then sabotage the foundation in any way possible. If you think odds are too overwhelming, you may retreat.
 ]],
 
 	SCP023 = [[Difficulty: Hard

@@ -188,22 +188,23 @@ SPAWN_MTF = {
 }
 
 local support_spawn = {
-	Vector( -7050.00, 3400.00, 2563.00 ),
-	Vector( -7050.00, 3320.00, 2563.00 ),
-	Vector( -7050.00, 3240.00, 2563.00 ),
-	Vector( -7050.00, 3160.00, 2563.00 ),
-	Vector( -7050.00, 3080.00, 2563.00 ),
-	Vector( -7050.00, 3000.00, 2563.00 ),
-	Vector( -7150.00, 3400.00, 2563.00 ),
-	Vector( -7150.00, 3320.00, 2563.00 ),
-	Vector( -7150.00, 3240.00, 2563.00 ),
-	Vector( -7150.00, 3160.00, 2563.00 ),
-	Vector( -7150.00, 3080.00, 2563.00 ),
-	Vector( -7150.00, 3000.00, 2563.00 ),
+	Vector( -170, 6706, 2200 ),
+	Vector( -170, 6806, 2200 ),
+	Vector( -170, 6906, 2200 ),
+	Vector( -170, 7006, 2200 ),
+	Vector( -170, 7106, 2200 ),
+	Vector( 70, 6706, 2200 ),
+	Vector( 70, 6806, 2200 ),
+	Vector( 70, 6906, 2200 ),
+	Vector( 70, 7006, 2200 ),
+	Vector( 70, 7106, 2200 ),
+	Vector( 270, 6706, 2200 ),
+	Vector( 270, 7106, 2200 ),
 }
 
 SPAWN_SUPPORT_MTF = support_spawn
 SPAWN_SUPPORT_CI = support_spawn
+SPAWN_SUPPORT_BANDITS = support_spawn
 
 --[[-------------------------------------------------------------------------
 Chips --TODO
@@ -252,7 +253,7 @@ CHIPS = {
 		},
 	},
 	lcz_2 = { --lcz closed areas
-		amount = 2,
+		amount = 4,
 		level = 2,
 		spawns = {
 			Vector( -1647.00, -575.00, 26.00 ),
@@ -266,7 +267,7 @@ CHIPS = {
 	},
 	hcz_2 = {
 		amount = 3,
-		level = 2,
+		level = 3,
 		spawns = {
 			Vector( 5995.00, -392.00, 1.00 ),
 			Vector( 5331.00, 2137.00, 29.00 ),
@@ -274,17 +275,17 @@ CHIPS = {
 			Vector( 4288.00, 3040.00, 1.00 ),
 			Vector( 3000.00, 2758.00, -382.00 ),
 			Vector( 2950.00, 1797.00, 1.00 ),
-			Vector( 1901.00, 5234.00, -213.00 ),
 		},
 	},
 	hcz_3 = {
 		amount = 2,
-		level = 3,
+		level = 4,
 		spawns = {
 			Vector( 5135.00, -1023.00, 62.00 ),
 			Vector( 5160.00, 543.00, 1.00 ),
 			Vector( 4857.00, -2620.00, 42.00 ),
 			Vector( 2151.00, 1600.00, 37.00 ),
+			Vector( 1901.00, 5234.00, -213.00 ),
 		},
 	},
 	ez_3 = {
@@ -321,7 +322,7 @@ OMNITOOLS = {
 		}
 	},
 	hcz = {
-		amount = 1,
+		amount = 2,
 		spawns = {
 			Vector( 3654.00, -1373.00, -127.00 ),
 			Vector( 5359.00, 180.00, 2.00 ),
@@ -1416,7 +1417,6 @@ BUTTONS = {
 		name = "SCP-914",
 		pos = Vector( 1264.00, -958.50, 53.00 ),
 		access = ACCESS_SAFE,
-		advanced_overload = 3,
 	},
 	{
 		name = "SCP-1123",

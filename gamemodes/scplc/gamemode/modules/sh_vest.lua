@@ -146,17 +146,17 @@ end
 VEST.Register( "guard", { model = GUARD_MODELS, damage = { [DMG_BULLET] = 0.7, [DMG_FALL] = 1.3 }, mobility = 0.95, weight = 1, bodygroups = { vest = 1 } }, true, guard_callback )
 VEST.Register( "specguard", { model = GUARD_MODELS, damage = { [DMG_BULLET] = 0.63, [DMG_FALL] = 1.4 }, mobility = 0.93, weight = 2, bodygroups = { vest = 1 } }, true, guard_callback )
 VEST.Register( "heavyguard", { model = GUARD_MODELS, damage = { [DMG_BULLET] = 0.6, [DMG_FALL] = 1.45 }, mobility = 0.92, weight = 2.5, bodygroups = { vest = 1, helmet = 1, armour = 1, nvg = 0 } }, true, guard_callback )
-VEST.Register( "guard_medic", { model = "models/scp/guard_med.mdl", damage = { [DMG_BULLET] = 0.6, [DMG_FALL] = 1.4 }, mobility = 0.93, weight = 2 } )
+VEST.Register( "guard_medic", { model = "models/player/medicplayer/medic.mdl", damage = { [DMG_BULLET] = 0.6, [DMG_FALL] = 1.4 }, mobility = 0.93, weight = 2 } )
 
 VEST.Register( "ntf", { model = "models/alski/mtfsupport/mtf1.mdl", damage = { [DMG_BULLET] = 0.5, [DMG_FALL] = 1.5 }, mobility = 0.88, weight = 3 } )
-VEST.Register( "mtf_medic", { model = "models/alski/mtfsupport/mtf_medyk.mdl", damage = { [DMG_BULLET] = 0.55, [DMG_FALL] = 1.4 }, mobility = 0.9, weight = 2 } )
+VEST.Register( "mtf_medic", { model = "models/player/medicplayer/medic.mdl", damage = { [DMG_BULLET] = 0.55, [DMG_FALL] = 1.4 }, mobility = 0.9, weight = 2 } )
 VEST.Register( "ntfcom", { model = "models/scp/captain.mdl", damage = { [DMG_BULLET] = 0.55, [DMG_FALL] = 1.45 }, mobility = 0.9, weight = 2.5 } )
 
 VEST.Register( "alpha1", { model = "models/alski/mtfsupport/saper_mtf.mdl", damage = { [DMG_BULLET] = 0.4, [DMG_FALL] = 1.6 }, mobility = 0.84, weight = 4 } )
 
 VEST.Register( "ci", { model = "models/friskiukas/bf4/us_01.mdl", damage = { [DMG_BULLET] = 0.45, [DMG_FALL] = 1.6 }, mobility = 0.83, weight = 4 } )
 
-VEST.Register( "fire", { model = "models/player/kerry/class_securety.mdl", damage = { [DMG_BURN] = 0.2, [DMG_FALL] = 1.7 }, mobility = 0.81, weight = 5 }, true )
+VEST.Register( "fire", { model = "models/player/pyroplayer/pyro.mdl", damage = { [DMG_BURN] = 0.2, [DMG_FALL] = 1.7 }, mobility = 0.81, weight = 5 }, true )
 VEST.Register( "electro", { model = "models/player/kerry/class_securety.mdl", damage = { [DMG_SHOCK] = 0.02, [DMG_ENERGYBEAM] = 0.02, [DMG_FALL] = 1.9 }, mobility = 0.88, weight = 4, HIDE = { [DMG_ENERGYBEAM] = true } }, true )
 
 //Entity(1):SetModel( "models/scp/guard_med.mdl" )
