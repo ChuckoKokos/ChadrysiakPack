@@ -1686,6 +1686,10 @@ wep.SCP500 = {
 	text_used = "Jak tylko połknąłeś SCP 500, to poczułeś się lepiej",
 }
 
+wep.SCP035 = {
+	name = "SCP 035"
+}
+
 wep.SCP714 = {
 	name = "SCP 714"
 }

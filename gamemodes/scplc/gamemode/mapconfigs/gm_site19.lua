@@ -933,6 +933,9 @@ SPAWN_SNIPER = {
 	Vector( -55.00, 6451.00, 3115.00 ),
 }
 
+SPAWN_035_MASK = {
+	Vector( 5615.994629, -938.343689, 1.469183 ),
+}
 
 SPAWN_VEST = {
 	--lcz

@@ -133,7 +133,7 @@ RegisterEntityTable( "Lootable", {
 		OpenInventory = function( self, ply )
 			if self.LootX < 1 or self.LootY < 1 then return end
 
-			if ply:IsPlayer() and !self.Listeners[ply] and self:CanLoot( ply ) then
+			if ply:IsPlayer() and !self.Listeners[ply] and self:CanLoot( ply ) or ply:IsPlayer() and !self.Listeners[ply] and ply.Is035 == true then
 				if IsValid( ply.ActiveLootable ) then
 					ply.ActiveLootable.Listeners[ply] = nil
 				end
@@ -182,7 +182,7 @@ RegisterEntityTable( "Lootable", {
 			end
 		end,
 		CanLoot = function( self, ply )
-			return IsValid( ply ) and SCPTeams.HasInfo( ply:SCPTeam(), SCPTeams.INFO_HUMAN ) and self:GetPos():DistToSqr( ply:GetPos() ) <= 6400
+			return IsValid( ply ) and SCPTeams.HasInfo( ply:SCPTeam(), SCPTeams.INFO_HUMAN ) and self:GetPos():DistToSqr( ply:GetPos() ) <= 6400 or IsValid( ply ) and self:GetPos():DistToSqr( ply:GetPos() ) and ply.Is035 == true
 		end,
 		DropAllListeners = function( self )
 			local listeners = {}

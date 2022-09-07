@@ -235,7 +235,7 @@ function ply:EquipVest( vest, silent )
 
 	local t = self:SCPTeam()
 	if t == TEAM_SPEC then return end
-	if t == TEAM_SCP and !self:GetSCPHuman() then return end
+	if t == TEAM_SCP and !self:GetSCPHuman() or self.Is035 == true then return end
 
 	if isstring( vest ) then
 		vest = VEST.GetID( vest )

@@ -396,6 +396,7 @@ function SpawnSupport()
 
 					print( "Assigning '"..ply:Nick().."' to support class '"..class.name.."' ["..group.."]" )
 					ply:SetupPlayer( class, table.remove( spawns, math.random( #spawns ) ) )
+					ply.Is035 = false
 
 					inuse[class.name] = inuse[class.name] + 1
 					num = num + 1
@@ -633,7 +634,6 @@ hook.Add( "Tick", "SLCEscapeCheck", function() --TODO remove timer on escape / e
 
 				local team = v:SCPTeam()
 				SCPTeams.AddScore( team, SCPTeams.GetReward( team ) * 2 )
-
 				v:Despawn()
 
 				v:KillSilent()

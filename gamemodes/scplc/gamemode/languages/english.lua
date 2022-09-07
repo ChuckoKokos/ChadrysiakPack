@@ -1733,6 +1733,10 @@ wep.SCP500 = {
 	text_used = "You soon as you swallowed this pill, you felt better",
 }
 
+wep.SCP035 = {
+	name = "SCP 035"
+}
+
 wep.SCP714 = {
 	name = "SCP 714"
 }

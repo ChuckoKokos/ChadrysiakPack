@@ -369,6 +369,8 @@ function GM:SpawnItems()
 		SpawnItemGeneric( { "cw_mp5", "cw_ar15", "cw_m14", "cw_scarh", "cw_l85a2" }, SPAWN_RIFLES, -1, post )
 		SpawnItemGeneric( { "cw_m3super90", "cw_saiga12k_official" }, SPAWN_PUMP, -1, post )
 		SpawnItemGeneric( "cw_l115", SPAWN_SNIPER, -1, post )
+		
+		SpawnItemGeneric( "item_scp_035", SPAWN_035_MASK, -1, post )
 
 		SpawnItemGeneric( { "weapon_crowbar", "weapon_stunstick" }, SPAWN_MELEE, 3, post )
 
