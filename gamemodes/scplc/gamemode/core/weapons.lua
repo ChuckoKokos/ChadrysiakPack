@@ -36,7 +36,7 @@ local CW_WEP_DMG = {
 	cw_m14 = 21,
 	cw_ar15 = 9,
 	cw_ak74 = 11.5,
-	cw_l85a2 = 13,
+	cw_l85a2 = 10,
 
 	--pump
 	cw_shorty = 8,
@@ -51,6 +51,16 @@ timer.Simple( 0, function()
 		local wep_tab = weapons.GetStored( k )
 		if wep_tab then
 			wep_tab.Damage = v
+		end
+	end
+end )
+
+hook.Add( "PlayerCanPickupWeapon", "CW20Pickup", function( ply, class )
+	if string.sub( class:GetClass(), 1, 3 ) == "cw_" and class.NormalHoldType ~= "grenade" then
+		for k, v in pairs( ply:GetWeapons() ) do
+			if string.sub( v:GetClass(), 1, 3 ) == "cw_" then
+				return false
+			end
 		end
 	end
 end )
