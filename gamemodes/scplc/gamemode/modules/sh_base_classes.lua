@@ -115,14 +115,29 @@ SAUL_MODELS = {
 	"models/player/saul/saul.mdl"
 }
 
+REZNOV_MODELS = {
+	"models/player/leatherhoff/viktor_reznov.mdl"
+}
+
+PRICE_MODELS = {
+	"models/arachnit/callofduty/modern_warfare_remastered/characters/sas/cpt_john_price/cpt_john_price_tactical_player.mdl"
+}
+
+SHEPARD_MODELS = {
+	"models/shepard.mdl"
+}
+
+DUDE_MODELS = {
+	"models/player/player_postal_dude.mdl",
+	"models/player/postal2_dude.mdl",
+}
+
 hook.Add( "SLCRegisterClassGroups", "BaseGroups", function()
 	AddClassGroup( "classd", 49, SPAWN_CLASSD )
 	AddClassGroup( "sci", 21, SPAWN_SCIENT )
 	AddClassGroup( "mtf", 30, SPAWN_MTF )
 
-	AddSupportGroup( "mtf_ntf", 75, SPAWN_SUPPORT_MTF, -1, function()
-		TransmitSound( string.format( "scp_lc/announcements/ntf_entered%i.ogg", math.random( 3 ) ), true, 1 )
-	end )
+	AddSupportGroup( "mtf_ntf", 75, SPAWN_SUPPORT_MTF, -1 )
 	//AddSupportGroup( "mtf_fire", 25, SPAWN_SUPPORT_MTF )
 	AddSupportGroup( "mtf_alpha", 10, SPAWN_SUPPORT_MTF, -1, function()
 		SetRoundStat( "mtfalphaspawned", true )
@@ -136,6 +151,7 @@ hook.Add( "SLCRegisterClassGroups", "BaseGroups", function()
 	end )
 	AddSupportGroup( "ci", 25, SPAWN_SUPPORT_CI, -1 )
 	AddSupportGroup( "bandits", 5, SPAWN_SUPPORT_BANDITS, -1 )
+	AddSupportGroup( "pdudes", 5, SPAWN_SUPPORT_PDUDES, -1 )
 end )
 
 hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
@@ -169,7 +185,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 		sanity = 75,
 		vest = nil,
 		price = 0,
-		max = 0,
+		max = 1,
 	} )
 	
 	RegisterClass( "jesse", "classd", JESSE_MODELS, {
@@ -301,7 +317,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 	---------------------------------------------------------------------------]]
 	RegisterClass( "guard", "mtf", GUARD_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", "cw_mp5" },
+		weapons = { "item_slc_radio", "item_slc_camera", "cw_mp5" },
 		ammo = { cw_mp5 = 180 },
 		chip = "guard",
 		omnitool = true,
@@ -317,7 +333,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 
 	RegisterClass( "lightguard", "mtf", GUARD_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_flashlight", "item_slc_battery", "cw_p99" },
+		weapons = { "item_slc_radio", "item_slc_flashlight", "item_slc_battery", "cw_p99" },
 		ammo = { cw_p99 = 120 },
 		chip = "guard",
 		omnitool = true,
@@ -333,7 +349,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 
 	RegisterClass( "heavyguard", "mtf", GUARD_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", "cw_m3super90" },
+		weapons = { "item_slc_radio", "item_slc_camera", "cw_m3super90" },
 		ammo = { cw_m3super90 = 32 },
 		chip = "guard",
 		omnitool = true,
@@ -349,7 +365,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 
 	RegisterClass( "specguard", "mtf", GUARD_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_nvg", "item_slc_gasmask", "cw_g36c" },
+		weapons = { "item_slc_radio", "item_slc_nvg", "item_slc_gasmask", "cw_g36c" },
 		ammo = { cw_g36c = 180 },
 		chip = "guard",
 		omnitool = true,
@@ -366,7 +382,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 
 	RegisterClass( "chief", "mtf", GUARD_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", "weapon_taser", "cw_ump45" },
+		weapons = { "item_slc_radio", "item_slc_camera", "weapon_taser", "cw_ump45" },
 		ammo = { cw_ump45 = 150 },
 		chip = "chief",
 		omnitool = true,
@@ -382,7 +398,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 
 	RegisterClass( "guardmedic", "mtf", GUARD_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_medkitplus", "weapon_taser", "cw_fiveseven" },
+		weapons = { "item_slc_radio", "item_slc_medkitplus", "weapon_taser", "cw_fiveseven" },
 		ammo = { cw_fiveseven = 80 },
 		chip = "guard",
 		omnitool = true,
@@ -398,7 +414,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 
 	RegisterClass( "tech", "mtf", GUARD_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", "cw_ump45", "item_slc_turret" },
+		weapons = { "item_slc_radio", "item_slc_camera", "cw_ump45", "item_slc_turret" },
 		ammo = { cw_ump45 = 150 },
 		chip = "guard",
 		omnitool = true,
@@ -414,7 +430,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 
 	RegisterClass( "cispy", "mtf", GUARD_MODELS, {
 		team = TEAM_CI,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", "cw_mp5" },
+		weapons = { "item_slc_radio", "item_slc_camera", "cw_mp5" },
 		ammo = { cw_mp5 = 180 },
 		chip = "guard",
 		omnitool = true,
@@ -431,7 +447,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 	
 	RegisterClass( "chadrysiaczek", "mtf", CHADRYSIACZEK_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", "weapon_ai_flamethrower" },
+		weapons = { "item_slc_radio", "item_slc_camera", "weapon_ai_flamethrower" },
 		ammo = { weapon_ai_flamethrower = 10000 },
 		chip = "guard",
 		omnitool = true,
@@ -441,7 +457,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 		sanity = 100,
 		vest = "fire",
 		price = 0,
-		max = 2,
+		max = 1,
 		persona = { team = TEAM_MTF, class = "guard" },
 		skin = 4,
 	} )
@@ -452,7 +468,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 	--NTF
 	RegisterSupportClass( "ntf_1", "mtf_ntf", MTF_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", "cw_ump45" },
+		weapons = { "item_slc_radio", "item_slc_camera", "cw_ump45" },
 		ammo = { cw_ump45 = 150 },
 		chip = "mtf",
 		omnitool = true,
@@ -465,39 +481,24 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 		max = 0,
 	} )
 
-	RegisterSupportClass( "ntf_2", "mtf_ntf", MTF_MODELS, {
+	RegisterSupportClass( "price", "mtf_ntf", PRICE_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", "cw_m3super90" },
-		ammo = { cw_m3super90 = 32 },
+		weapons = { "item_slc_radio", "item_slc_camera", { "item_slc_nvg", "item_slc_gasmask" }, "cw_mp7_official" },
+		ammo = { cw_mp7_official = 180 },
 		chip = "mtf",
 		omnitool = true,
-		health = 115,
+		health = 150,
 		walk_speed = 115,
 		run_speed = 250,
 		sanity = 125,
-		vest = "ntf",
+		vest = nil,
 		price = 0,
-		max = 0,
+		max = 1,
 	} )
-
-	RegisterSupportClass( "ntf_3", "mtf_ntf", MTF_MODELS, {
-		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", "cw_g36c" },
-		ammo = { cw_g36c = 240 },
-		chip = "mtf",
-		omnitool = true,
-		health = 115,
-		walk_speed = 115,
-		run_speed = 250,
-		sanity = 125,
-		vest = "ntf",
-		price = 0,
-		max = 0,
-	} )
-
+	
 	RegisterSupportClass( "ntfmedic", "mtf_ntf", MTF_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_medkit", "item_slc_medkitplus", "cw_fiveseven" },
+		weapons = { "item_slc_radio", "item_slc_medkit", "item_slc_medkitplus", "cw_fiveseven" },
 		ammo = { cw_fiveseven = 120 },
 		chip = "mtf",
 		omnitool = true,
@@ -510,24 +511,24 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 		max = 1,
 	} )
 
-	RegisterSupportClass( "ntfcom", "mtf_ntf", MTF_MODELS, {
+	RegisterSupportClass( "shepard", "mtf_ntf", SHEPARD_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", "item_slc_nvg", "cw_m14" },
-		ammo = { cw_m14 = 120 },
+		weapons = { "item_slc_radio", "item_slc_camera", "item_slc_nvg", "cw_scarh" },
+		ammo = { cw_scarh = 120 },
 		chip = "com",
 		omnitool = true,
-		health = 135,
+		health = 160,
 		walk_speed = 120,
 		run_speed = 255,
 		sanity = 150,
-		vest = "ntfcom",
+		vest = nil,
 		price = 0,
 		max = 1,
 	} )
 
 	RegisterSupportClass( "ntfsniper", "mtf_ntf", MTF_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "cw_l115" },
+		weapons = { "item_slc_radio", "cw_l115" },
 		ammo = { cw_l115 = 30 },
 		chip = "mtf",
 		omnitool = true,
@@ -543,7 +544,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 	--Alpha-1
 	RegisterSupportClass( "alpha1", "mtf_alpha", MTF_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", { "item_slc_nvg", "item_slc_gasmask" }, "cw_scarh" },
+		weapons = { "item_slc_radio", "item_slc_camera", { "item_slc_nvg", "item_slc_gasmask" }, "cw_scarh" },
 		ammo = { cw_scarh = 120 },
 		chip = "o5",
 		omnitool = true,
@@ -558,7 +559,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 	
 	RegisterSupportClass( "raiden", "mtf_alpha", RAIDEN_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "weapon_dmc4rebellion" },
+		weapons = { "item_slc_radio", "weapon_dmc4rebellion" },
 		ammo = {},
 		chip = "o5",
 		omnitool = true,
@@ -573,7 +574,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 	
 	RegisterSupportClass( "sam", "mtf_alpha", SAM_MODELS, {
 		team = TEAM_CI,
-		weapons = { "weapon_stunstick", "item_slc_radio", "weapon_dmc4rebellion" },
+		weapons = { "item_slc_radio", "weapon_dmc4rebellion" },
 		ammo = {},
 		chip = "o5",
 		omnitool = true,
@@ -588,7 +589,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 
 	RegisterSupportClass( "alpha1sniper", "mtf_alpha", MTF_MODELS, {
 		team = TEAM_MTF,
-		weapons = { "weapon_stunstick", "item_slc_radio", "item_slc_camera", { "item_slc_nvg", "item_slc_gasmask" }, "cw_m14" },
+		weapons = { "item_slc_radio", "item_slc_camera", { "item_slc_nvg", "item_slc_gasmask" }, "cw_m14" },
 		ammo = { cw_m14 = 120 },
 		chip = "o5",
 		omnitool = true,
@@ -604,7 +605,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 	--CI
 	RegisterSupportClass( "ci", "ci", CI_MODELS, {
 		team = TEAM_CI,
-		weapons = { "weapon_stunstick", "item_slc_radio", "cw_l85a2" },
+		weapons = { "item_slc_radio", "cw_l85a2" },
 		ammo = { cw_l85a2 = 240 },
 		chip = "hacked3",
 		omnitool = true,
@@ -619,7 +620,7 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 
 	RegisterSupportClass( "cicom", "ci", CI_MODELS, {
 		team = TEAM_CI,
-		weapons = { "weapon_stunstick", "item_slc_radio", "cw_ak74" },
+		weapons = { "item_slc_radio", "cw_ak74" },
 		ammo = { cw_ak74 = 240 },
 		chip = "hacked4",
 		omnitool = true,
@@ -632,9 +633,24 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 		max = 1,
 	} )
 	
+	RegisterSupportClass( "reznov", "ci", REZNOV_MODELS, {
+		team = TEAM_CI,
+		weapons = { "climb_swep2", "item_slc_radio", "item_slc_medkit", "juju_ppsh" },
+		ammo = { juju_ppsh = 500 },
+		chip = "hacked4",
+		omnitool = true,
+		health = 200,
+		walk_speed = 125,
+		run_speed = 250,
+		sanity = 125,
+		vest = nil,
+		price = 0,
+		max = 1,
+	} )
+	
 	RegisterSupportClass( "bandit", "bandits", BANDITS_MODELS, {
 		team = TEAM_BANDITS,
-		weapons = { "weapon_stunstick", "item_slc_radio", "cw_ak74", "hobo_bandit" },
+		weapons = { "item_slc_radio", "cw_ak74", "hobo_bandit" },
 		ammo = { cw_ak74 = 240 },
 		chip = "hacked3",
 		omnitool = true,
@@ -647,9 +663,9 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 		max = 0,
 	} )
 	
-		RegisterSupportClass( "banditasval", "bandits", BANDITS_MODELS, {
+	RegisterSupportClass( "banditasval", "bandits", BANDITS_MODELS, {
 		team = TEAM_BANDITS,
-		weapons = { "weapon_stunstick", "item_slc_radio", "cw_vss", "hobo_bandit" },
+		weapons = { "item_slc_radio", "cw_vss", "hobo_bandit" },
 		ammo = { cw_vss = 240 },
 		chip = "hacked3",
 		omnitool = true,
@@ -661,6 +677,22 @@ hook.Add( "SLCRegisterPlayerClasses", "BaseClasses", function()
 		price = 0,
 		max = 1,
 	} )
+	
+	RegisterSupportClass( "postaldude", "pdudes", DUDE_MODELS, {
+		team = TEAM_PDUDES,
+		weapons = { "item_slc_radio", "cw_ar15" },
+		ammo = { cw_ar15 = 240 },
+		chip = "hacked3",
+		omnitool = true,
+		health = 180,
+		walk_speed = 115,
+		run_speed = 250,
+		sanity = 125,
+		vest = nil,
+		price = 0,
+		max = 0,
+	} )
+	
 end )
 
 if CLIENT then

@@ -22,7 +22,7 @@ function SWEP:HandleUpgrade( mode, num_mode, pos )
 	self:SetPos( pos )
 	
 	if mode == UPGRADE_MODE.VERY_FINE then
-		if math.random( 100 ) <= 33 then
+		if math.random( 33 ) <= 33 then
 			self:SetUpgraded( true )
 		end
 	end
@@ -49,4 +49,17 @@ end*/
 
 function SWEP:OnSelect()
 	self:SetEnabled( !self:GetEnabled() )
+end
+
+if CLIENT then
+	local overlay = GetMaterial( "slc/misc/newgasmask.png" )
+	hook.Add( "SLCScreenMod", "GasMask", function( clr )
+		local ply = LocalPlayer()
+		local wep = ply:GetWeapon( "item_slc_gasmask" )
+
+		if IsValid( wep ) and wep:GetEnabled() then
+			render.SetMaterial( overlay )
+			render.DrawScreenQuad()
+		end
+	end )
 end

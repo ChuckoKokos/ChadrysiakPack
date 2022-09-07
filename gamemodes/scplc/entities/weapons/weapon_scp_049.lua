@@ -22,10 +22,10 @@ local function translate_zombie_model( ply )
 		if random == 1 then
 			return "models/player/gothic/mud.mdl", math.random( 0, 4 )
 		else
-			return "models/jajoff/spc/gothic/diego.mdl", math.random( 0, 4 )
+			return "models/jajoff/sps/gothic/diego.mdl", math.random( 0, 4 )
 		end
 	elseif team == TEAM_SCI then
-		return "models/jajoff/spc/gothic/diego.mdl", math.random( 0, 4 )
+		return "models/jajoff/sps/gothic/diego.mdl", math.random( 0, 4 )
 	end
 end
 

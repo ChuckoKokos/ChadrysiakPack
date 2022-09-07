@@ -85,7 +85,7 @@ local SHOW_WEP_INFO = nil
 
 local WEAPONS = {}
 local EQ = {
-	cols = 4,
+	cols = 5,
 	rows = 2,
 	size = 0.085,
 	offset = 0.0075

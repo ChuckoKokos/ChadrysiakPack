@@ -371,10 +371,6 @@ function GM:PlayerDeathSound()
 	return true
 end
 
-function GM:PlayerSwitchFlashlight( ply, enabled )
-	return !enabled
-end
-
 --[[-------------------------------------------------------------------------
 SCP "chase" effect
 ---------------------------------------------------------------------------]]
@@ -456,7 +452,7 @@ function GM:PlayerUse( ply, ent )
 	--Lootables
 	if !ent.LootingDisabled and ply:IsHuman() and ent:InstanceOf( "Lootable" ) then
 		ent:OpenInventory( ply )
-		ply.NextSLCUse = ct + 1.5
+		ply.NextSLCUse = ct + 0.1
 		return
 	end
 

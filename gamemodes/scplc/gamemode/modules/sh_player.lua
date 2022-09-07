@@ -371,7 +371,7 @@ function ply:IsSpectator()
 end
 
 function ply:GetInventorySize()
-	return 8
+	return 10
 end
 
 function ply:IsHuman()

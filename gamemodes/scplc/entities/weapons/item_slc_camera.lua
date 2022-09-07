@@ -73,13 +73,22 @@ function SWEP:SecondaryAttack()
 	if !self:GetEnabled() then return end
 	if self.NextChange > CurTime() then return end
 
+	local CAMOwner = self:GetOwner()
 	local CAM = self:GetCAM() + 1
+	local CAMBack = self:GetCAM() - 1
 
 	if CAM > #CCTV then
 		CAM = 1
 	end
-
-	self:SetCAM( CAM )
+	if CAMBack < 1 then
+		CAMBack = table.GetLastKey( CCTV )
+	end
+	
+	if CAMOwner:KeyDown ( IN_SPEED ) then
+		self:SetCAM( CAMBack )
+	else
+		self:SetCAM( CAM )
+	end
 	self.NextChange = CurTime() + 0.1
 end
 
@@ -89,7 +98,7 @@ function SWEP:Reload()
 	self.ScanCD = CurTime() + 0.1
 
 	if self.ScanEnd == 0 then 
-		self.ScanEnd = CurTime() + 3
+		self.ScanEnd = CurTime() + 1
 		self.CurScan = CurTime()
 	else
 		self.CurScan = CurTime()
@@ -231,7 +240,7 @@ function SWEP:DrawHUD()
 
 		if self.ScanEnd != 0 then
 			surface.SetDrawColor( Color( 255, 255, 255 ) )
-			surface.DrawRing( w * 0.5, h * 0.5, 40, 5, 360 - 360 * (self.ScanEnd - CurTime()) / 3, 30 )
+			surface.DrawRing( w * 0.5, h * 0.5, 40, 5, 360 - 360 * (self.ScanEnd - CurTime()) / 1, 30 )
 
 			draw.Text( {
 				text = "SCANNING",

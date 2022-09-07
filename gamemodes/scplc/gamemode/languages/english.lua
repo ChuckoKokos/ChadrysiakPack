@@ -199,7 +199,8 @@ lang.view_cat = {
 	mtf_ntf = "MTF Epsilon-11",
 	mtf_alpha = "MTF Alpha-1",
 	ci = "Chaos Insurgency",
-	bandits = "Bandits"
+	bandits = "Bandits",
+	pdudes = "Postal Dudes"
 }
 
 --[[-------------------------------------------------------------------------
@@ -428,6 +429,7 @@ teams.MTF = "MTF"
 teams.CI = "CI"
 teams.SCP = "SCP"
 teams.BANDITS = "Bandits"
+teams.PDUDES = "Postal Dudes"
 
 --[[-------------------------------------------------------------------------
 Classes
@@ -476,6 +478,7 @@ classes.specguard = "Security Guard Specialist"
 classes.guardmedic = "Security Guard Medic"
 classes.tech = "Security Guard Technician"
 classes.cispy = "CI Spy"
+classes.reznov = "Victor Reznov"
 
 classes.ntf_1 = "MTF NTF - SMG"
 classes.ntf_2 = "MTF NTF - Shotgun"
@@ -489,9 +492,14 @@ classes.ci = "Chaos Insurgency"
 classes.cicom = "Chaos Insurgency Commander"
 classes.chadrysiaczek = "Chadrysiaczek"
 classes.raiden = "Raiden"
+classes.shepard = "General Shepard"
+classes.price = "John Price"
+classes.soap = "John MacTavish"
 
 classes.bandit = "Bandit"
 classes.banditasval = "Expert Bandit"
+
+classes.postaldude = "Postal Dude"
 
 local classes_id = {}
 lang.CLASSES_ID = classes_id
@@ -548,7 +556,7 @@ lang.CLASS_OBJECTIVES = {
 
 	sciassistant = generic_sci,
 	
-	heisenberg = [[- Protect Jessse at ALL cost,
+	heisenberg = [[- Protect Jesse at ALL cost,
 	-Help Jesse escape from the facility,
 	-Deceive MTFs to smuggle Jesse out of the facility]],
 

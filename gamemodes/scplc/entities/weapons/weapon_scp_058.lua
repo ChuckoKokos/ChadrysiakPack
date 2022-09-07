@@ -367,22 +367,22 @@ DefineUpgradeSystem( "scp058", {
 	grid_x = 5,
 	grid_y = 3,
 	upgrades = {
-		{ name = "attack1", icon = icons.attack, cost = 2, req = {}, reqany = false,  pos = { 1, 1 }, mod = { primary_poison = true }, active = false },
-		{ name = "attack2", icon = icons.attack, cost = 3, req = { "attack1" }, reqany = false,  pos = { 1, 2 }, mod = { prim_dmg = 10, pp_dmg = 0.25, prim_cd = 0.5 }, active = false },
-		{ name = "attack3", icon = icons.attack, cost = 4, req = { "attack2" }, reqany = false,  pos = { 1, 3 }, mod = { pp_dmg = 0.5, prim_cd = 1, pp_inta2 = true }, active = false },
+		{ name = "attack1", icon = icons.attack, cost = 1, req = {}, reqany = false,  pos = { 1, 1 }, mod = { primary_poison = true }, active = false },
+		{ name = "attack2", icon = icons.attack, cost = 2, req = { "attack1" }, reqany = false,  pos = { 1, 2 }, mod = { prim_dmg = 10, pp_dmg = 0.25, prim_cd = 0.5 }, active = false },
+		{ name = "attack3", icon = icons.attack, cost = 3, req = { "attack2" }, reqany = false,  pos = { 1, 3 }, mod = { pp_dmg = 0.5, prim_cd = 1, pp_inta2 = true }, active = false },
 
-		{ name = "shot", icon = icons.poison_shot, cost = 3, req = {}, reqany = false,  pos = { 3, 1 }, mod = { shot_poison = true }, active = false },
+		{ name = "shot", icon = icons.poison_shot, cost = 1, req = {}, reqany = false,  pos = { 3, 1 }, mod = { shot_poison = true }, active = false },
 
-		{ name = "shot11", icon = icons.shot, cost = 3, req = { "shot" }, reqany = false, block = { "shot21", "shot31" },  pos = { 2, 2 }, mod = { shot_damage = 1.4, shot_speed = 0.9, shot_size = 1.3, shot_cd = 1 }, active = false },
-		{ name = "shot12", icon = icons.shot, cost = 4, req = { "shot11" }, reqany = false,  pos = { 2, 3 }, mod = { shot_damage = 2, shot_speed = 0.75, shot_size = 1.75, shot_cd = 2, shot_poison = false }, active = false },
+		{ name = "shot11", icon = icons.shot, cost = 2, req = { "shot" }, reqany = false, block = { "shot21", "shot31" },  pos = { 2, 2 }, mod = { shot_damage = 1.4, shot_speed = 0.9, shot_size = 1.3, shot_cd = 1 }, active = false },
+		{ name = "shot12", icon = icons.shot, cost = 3, req = { "shot11" }, reqany = false,  pos = { 2, 3 }, mod = { shot_damage = 2, shot_speed = 0.75, shot_size = 1.75, shot_cd = 2, shot_poison = false }, active = false },
 
-		{ name = "shot21", icon = icons.cloud, cost = 3, req = { "shot" }, reqany = false, block = { "shot11", "shot31" },  pos = { 3, 2 }, mod = { shot_mode = 1, cloud_damage = 5, sp_dmg = 0.5, shot_speed = 0.8, shot_size = 1.2, stacks = 2, shot_cd = 5, regen_rate = 0.9 }, active = false },
-		{ name = "shot22", icon = icons.cloud, cost = 4, req = { "shot21" }, reqany = false,  pos = { 3, 3 }, mod = { cloud_damage = 10, cloud_dur = 1.5, sp_dmg = 1, shot_speed = 0.6, shot_size = 1.4, regen_rate = 0.75 }, active = false },
+		{ name = "shot21", icon = icons.cloud, cost = 2, req = { "shot" }, reqany = false, block = { "shot11", "shot31" },  pos = { 3, 2 }, mod = { shot_mode = 1, cloud_damage = 5, sp_dmg = 0.5, shot_speed = 0.8, shot_size = 1.2, stacks = 2, shot_cd = 5, regen_rate = 0.9 }, active = false },
+		{ name = "shot22", icon = icons.cloud, cost = 3, req = { "shot21" }, reqany = false,  pos = { 3, 3 }, mod = { cloud_damage = 10, cloud_dur = 1.5, sp_dmg = 1, shot_speed = 0.6, shot_size = 1.4, regen_rate = 0.75 }, active = false },
 
-		{ name = "shot31", icon = icons.multishot, cost = 3, req = { "shot" }, reqany = false, block = { "shot11", "shot21" },  pos = { 4, 2 }, mod = { shot_mode = 2, shot_speed = 1.1, shot_size = 0.85, stacks = 4, regen_rate = 1.5 }, active = true },
-		{ name = "shot32", icon = icons.multishot, cost = 4, req = { "shot31" }, reqany = false,  pos = { 4, 3 }, mod = { shot_speed = 1.25, shot_size = 0.6, stacks = 6, regen_rate = 2.2 }, active = false },
+		{ name = "shot31", icon = icons.multishot, cost = 3333333, req = { "shot" }, reqany = false, block = { "shot11", "shot21" },  pos = { 4, 2 }, mod = { shot_mode = 2, shot_speed = 1.1, shot_size = 0.85, stacks = 4, regen_rate = 1.5 }, active = true },
+		{ name = "shot32", icon = icons.multishot, cost = 3333333, req = { "shot31" }, reqany = false,  pos = { 4, 3 }, mod = { shot_speed = 1.25, shot_size = 0.6, stacks = 6, regen_rate = 2.2 }, active = false },
 
-		{ name = "exp1", icon = icons.explosion1, cost = 3, req = {}, reqany = false,  pos = { 5, 1 }, mod = {}, active = true },
+		{ name = "exp1", icon = icons.explosion1, cost = 2, req = {}, reqany = false,  pos = { 5, 1 }, mod = {}, active = true },
 		{ name = "exp2", icon = icons.explosion2, cost = 3, req = { "exp1" }, reqany = false,  pos = { 5, 2 }, mod = { explosion_poison = true, explosion_radius = 1.5 }, active = false },
 
 		{ name = "nvmod", cost = 1, req = {}, reqany = false,  pos = { 5, 3 }, mod = {}, active = false },

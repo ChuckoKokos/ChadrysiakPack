@@ -12,7 +12,7 @@ SWEP.Toggleable 	= true
 SWEP.EnableHolsterThink	= true
 SWEP.HasBattery 	= true
 SWEP.HolsterBatteryUsage = true
-SWEP.BatteryUsage 	= 0.1
+SWEP.BatteryUsage 	= 0.15
 
 function SWEP:Initialize()
 	self:SetHoldType( self.HoldType )

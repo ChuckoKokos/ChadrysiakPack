@@ -17,7 +17,15 @@ hook.Add( "StartCommand", "SLCSprint", function( ply, cmd )
 
 				local stamina = ply:GetStamina()
 				local mask = ply:GetWeapon( "item_slc_gasmask" )
-				if !IsValid( mask ) or !mask:GetEnabled() or !mask:GetUpgraded() or stamina - 10 > 30 then
+				if IsValid( mask ) and mask:GetEnabled() and mask:GetUpgraded() then
+					stamina = stamina - 5
+
+					if stamina < 0 then
+						stamina = 0
+					end
+
+					ply:SetStamina( stamina )
+				else
 					stamina = stamina - 10
 
 					if stamina < 0 then
@@ -107,10 +115,12 @@ local function CalcStamina( ply )
 		regen_delay = 0.2,
 		regen_rate_exhausted = 1,
 		regen_rate = 2,
+		regen_rate_mask = 4,
 
 		use_delay = 0.125,
 		regen_delay_running = 1,
 		use_rate = 1,
+		use_rate_mask = 0.5,
 	}
 	
 	local skip = hook.Run( "SLCStamina", ply, data, stamina, max_stamina, stamina_limit )
@@ -125,8 +135,11 @@ local function CalcStamina( ply )
 	if ply.StaminaRegen < CurTime() then
 		ply.StaminaRegen = CurTime() + data.regen_delay
 
+		local mask = ply:GetWeapon( "item_slc_gasmask" )
 		if ply.Exhausted then
 			stamina = stamina + data.regen_rate_exhausted
+		elseif IsValid( mask ) and mask:GetEnabled() and mask:GetUpgraded() then
+			stamina = stamina + data.regen_rate_mask
 		else
 			stamina = stamina + data.regen_rate
 		end
@@ -144,7 +157,14 @@ local function CalcStamina( ply )
 			ply.StaminaRegen = CurTime() + data.regen_delay_running
 
 			local mask = ply:GetWeapon( "item_slc_gasmask" )
-			if !IsValid( mask ) or !mask:GetEnabled() or !mask:GetUpgraded() or stamina > 30 then
+			if IsValid( mask ) and mask:GetEnabled() and mask:GetUpgraded() then
+				//ply.Stamina = math.max( ply.Stamina - 1, 0 )
+				stamina = stamina - data.use_rate_mask
+
+				if stamina < 0 then
+					stamina = 0
+				end
+			else
 				//ply.Stamina = math.max( ply.Stamina - 1, 0 )
 				stamina = stamina - data.use_rate
 

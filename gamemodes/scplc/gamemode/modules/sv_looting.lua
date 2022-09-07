@@ -137,9 +137,11 @@ net.Receive( "SLCLooting", function( len, ply )
 					else
 						local wep
 
-						if table.Count( ply:GetWeapons() ) < 8 then
+						if table.Count( ply:GetWeapons() ) < 10 then
 							wep = ply:Give( obj.info.class )
 						end
+						
+						if obj.info.class == "item_slc_flashlight" and ply.PickedupFlashlight == 1 then return end
 
 						if IsValid( wep ) then
 							local data = obj.info.data
@@ -290,13 +292,14 @@ end
 //LCZ
 AddLootPool( "lcz_loose_loot", {
 	max = 3,
-	value_limit = 100,
-	chance = 0.25,
+	value_limit = 200,
+	chance = 0.75,
 	items = {
-		{ class = "item_slc_battery", weight = 2, value = 10, data = { amount = 2 } },
+		{ class = "item_slc_battery", weight = 2, value = 5, data = { amount = 2 } },
 		{ class = "item_slc_battery", weight = 5, value = 5, },
 		{ class = "item_slc_flashlight", weight = 10, value = 30 },
 		{ class = "item_slc_radio", weight = 5, value = 75, max = 1 },
+		{ class = "item_slc_camera", weight = 5, value = 75, max = 2 },
 		{ class = "item_slc_nvg", weight = 5, value = 75, max = 1 },
 		{ class = "item_slc_gasmask", weight = 5, value = 75, max = 1 },
 	}
@@ -304,12 +307,15 @@ AddLootPool( "lcz_loose_loot", {
 
 AddLootPool( "lcz_large_loot", {
 	max = 8,
-	value_limit = 300,
-	chance = 0.333,
+	value_limit = 500,
+	chance = 0.75,
 	items = {
-		{ class = "item_slc_battery", weight = 5, value = 20, max = 1, data = { amount = 3 } },
+		{ class = "item_slc_battery", weight = 5, value = 5, max = 1, data = { amount = 3 } },
 		{ class = "item_slc_flashlight", weight = 5, value = 30, max = 2 },
 		{ class = "item_slc_radio", weight = 5, value = 75, max = 2 },
+		{ class = "item_slc_camera", weight = 5, value = 75, max = 2 },
+		{ class = "cw_smoke_grenade", weight = 2, value = 20 },
+		{ class = "cw_flash_grenade", weight = 2, value = 20 },
 		{ class = "item_slc_nvg", weight = 5, value = 75, max = 2 },
 		{ class = "item_slc_gasmask", weight = 5, value = 75, max = 2 },
 		{ class = "item_slc_omnitool", weight = 5, value = 125, max = 1, ntd = { chip_chance = 0.666, chip_max = 2 }, post = omnitool_post },
@@ -317,23 +323,42 @@ AddLootPool( "lcz_large_loot", {
 	}
 } )
 
+AddLootPool( "lcz_large_rare_loot", {
+	max = 8,
+	value_limit = 500,
+	chance = 0.75,
+	items = {
+		{ class = "item_slc_battery", weight = 5, value = 5, max = 1, data = { amount = 3 } },
+		{ class = "item_slc_flashlight", weight = 5, value = 30, max = 2 },
+		{ class = "item_slc_radio", weight = 5, value = 75, max = 2 },
+		{ class = "item_slc_camera", weight = 5, value = 75, max = 2 },
+		{ class = "item_slc_nvg", weight = 5, value = 75, max = 2 },
+		{ class = "item_slc_gasmask", weight = 5, value = 75, max = 2 },
+		{ class = "item_slc_access_chip", weight = 5, value = 100, max = 1, ntd = { chip_min = 3, chip_max = 3 }, post = chip_post, roll = chip_roll },
+	}
+} )
+
 AddLootPool( "lcz_rare_loot", {
 	max = 3,
-	chance = 0.25,
+	chance = 1.0,
 	items = {
 		{ class = "item_slc_nvg", weight = 5 },
 		{ class = "item_slc_medkit", weight = 5 },
 		{ class = "item_slc_omnitool", weight = 5, ntd = { chip_chance = 1, chip_max = 2 }, post = omnitool_post },
 		{ class = "item_slc_access_chip", weight = 5, ntd = { chip_min = 2, chip_max = 3 }, post = chip_post, roll = chip_roll },
-		{ class = "cw_mr96", weight = 5 },
+		{ class = "cw_mr96", weight = 2 },
+		{ class = "cw_p99", weight = 2 },
 	}
 } )
 
 AddLootPool( "lcz_valuable_loot", {
 	value_limit = 200,
-	chance = 0.333,
+	chance = 0.65,
 	items = {
 		{ class = "item_slc_medkit", weight = 5, value = 50 },
+		{ class = "cw_smoke_grenade", weight = 4, value = 20 },
+		{ class = "cw_flash_grenade", weight = 4, value = 20 },
+		{ class = "cw_frag_grenade", weight = 4, value = 100 },
 		{ class = "item_slc_medkitplus", weight = 2, value = 100 },
 		{ class = "item_slc_omnitool", weight = 5, value = 150, ntd = { chip_chance = 1, chip_max = 2 }, post = omnitool_post },
 		{ class = "item_slc_access_chip", weight = 5, value = 100, ntd = { chip_min = 3, chip_max = 3 }, post = chip_post, roll = chip_roll },
@@ -344,10 +369,11 @@ AddLootPool( "lcz_valuable_loot", {
 
 AddLootPool( "lcz_military_crate", {
 	max = 2,
-	chance = 0.2,
+	chance = 1.0,
 	items = {
 		{ class = "cw_p99", weight = 5 },
 		{ class = "cw_mp5", weight = 5 },
+		{ class = "cw_frag_grenade", weight = 5, max = 1 },
 		{ class = "cw_mr96", weight = 5 },
 		{ class = "weapon_taser", weight = 5, max = 1 },
 	}
@@ -357,10 +383,13 @@ AddLootPool( "lcz_military_crate", {
 AddLootPool( "hcz_large_loot", {
 	max = 8,
 	value_limit = 300,
-	chance = 0.333,
+	chance = 0.75,
 	items = {
-		{ class = "item_slc_battery", weight = 5, value = 10, max = 2, data = { amount = 3 } },
+		{ class = "item_slc_battery", weight = 5, value = 5, max = 2, data = { amount = 3 } },
 		{ class = "item_slc_nvg", weight = 5, value = 75, max = 2 },
+		{ class = "cw_smoke_grenade", weight = 4, value = 30, max = 1 },
+		{ class = "cw_flash_grenade", weight = 4, value = 30, max = 1 },
+		{ class = "cw_frag_grenade", weight = 3, value = 100, max = 1 },
 		{ class = "item_slc_camera", weight = 3, value = 100, max = 2 },
 		{ class = "item_slc_gasmask", weight = 5, value = 75, max = 2 },
 		{ class = "item_slc_medkit", weight = 3, value = 100, max = 2 },
@@ -371,12 +400,15 @@ AddLootPool( "hcz_large_loot", {
 
 AddLootPool( "hcz_035", {
 	value_limit = 500,
-	chance = 0.5,
+	chance = 0.7,
 	items = {
 		{ class = "item_scp_500", weight = 3, value = 300 },
 		{ class = "cw_fiveseven", weight = 5, value = 251 },
 		{ class = "cw_p99", weight = 5, value = 251 },
 		{ class = "cw_mr96", weight = 5, value = 251 },
+		{ class = "cw_smoke_grenade", weight = 7, value = 50 },
+		{ class = "cw_flash_grenade", weight = 7, value = 50 },
+		{ class = "cw_frag_grenade", weight = 5, value = 100 },
 		{ class = "weapon_taser", weight = 7, value = 200 },
 		{ class = "item_slc_radio", weight = 9, value = 50 },
 		{ class = "item_slc_nvg", weight = 9, value = 50 },
@@ -393,19 +425,19 @@ AddLootPool( "hcz_035", {
 //EZ
 AddLootPool( "ez_loose_loot", {
 	max = 3,
-	chance = 0.333,
+	chance = 0.75,
 	items = {
 		{ class = "item_slc_battery", weight = 5, value = 25, },
 		{ class = "item_slc_flashlight", weight = 8, value = 30 },
 		{ class = "item_slc_radio", weight = 8, value = 75, max = 1 },
-		{ class = "item_slc_access_chip", weight = 5, ntd = { chip_min = 2, chip_max = 3 }, post = chip_post, roll = chip_roll },
+		{ class = "item_slc_access_chip", weight = 3, ntd = { chip_min = 2, chip_max = 3 }, post = chip_post, roll = chip_roll },
 		{ class = "item_slc_camera", weight = 5, max = 1 },
 	}
 } )
 
 AddLootPool( "ez_valuable_loot", {
 	value_limit = 200,
-	chance = 0.333,
+	chance = 0.666,
 	items = {
 		{ class = "item_slc_medkit", weight = 5, value = 50 },
 		{ class = "item_slc_medkitplus", weight = 2, value = 100 },
@@ -418,14 +450,14 @@ AddLootPool( "ez_valuable_loot", {
 
 //Special
 AddLootPool( "guard_desk", {
-	max = 2,
-	chance = 0.2,
+	max = 5,
+	chance = 1.0,
 	items = {
-		{ class = "item_slc_flashlight", weight = 6 },
-		{ class = "item_slc_radio", weight = 6 },
-		{ class = "cw_ar15", weight = 1 },
-		{ class = "item_slc_access_chip", weight = 1, ntd = { chip_min = 3, chip_max = 4 }, post = chip_post, roll = chip_roll },
-		{ class = "item_slc_turret", weight = 1 },
+		{ class = "cw_ar15", weight = 1, max = 1 },
+		{ class = "item_slc_access_chip", weight = 1, ntd = { chip_min = 3, chip_max = 3 }, post = chip_post, roll = chip_roll },
+		{ class = "item_slc_medkit", weight = 5, max = 1 },
+		{ class = "item_slc_camera", weight = 5, max = 1 },
+		{ class = "item_slc_gasmask", weight = 9, max = 1 },
 	}
 } )
 
@@ -436,20 +468,16 @@ AddLootPool( "toilet", {
 		{ class = "item_slc_alpha_card2", weight = 1 },
 		{ class = "cw_fiveseven", weight = 2 },
 		{ class = "item_slc_access_chip", weight = 3, ntd = { chip_min = 3, chip_max = 5 }, post = chip_post, roll = chip_roll },
-		{ class = "item_slc_gasmask", weight = 3, post = function( ply, item, data, ntd )
-			item:SetUpgraded( true )
-		end },
 		{ class = "item_scp_500", weight = 5 },
 		{ class = "item_slc_nvgplus", weight = 5 },
 		{ class = "item_slc_medkitplus", weight = 5 },
-		{ class = "item_slc_camera", weight = 5 },
 		{ class = "weapon_taser", weight = 5 },
 	}
 } )
 
 AddLootPool( "medbay", {
 	max = 3,
-	chance = 0.4,
+	chance = 1.0,
 	items = {
 		{ class = "item_slc_medkit", weight = 9 },
 		{ class = "item_slc_medkitplus", weight = 3 },

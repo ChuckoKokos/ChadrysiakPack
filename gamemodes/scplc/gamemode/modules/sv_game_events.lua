@@ -143,16 +143,11 @@ function ExplodeGateA( ply )
 	if IsGateAOpen() then return end
 
 	SetRoundStat( "gatea", true )
-	
-	local snd = ServerSound( "ambient/alarms/alarm_citizen_loop1.wav" )
-	snd:SetSoundLevel( 0 )
-	snd:Play()
-	snd:ChangeVolume( 0.25 )
 
 	//BroadcastLua( 'surface.PlaySound("scp_lc/franklin1.ogg")' )
 
 	local time = CVAR.slc_time_explode:GetInt()
-	PlayerMessage( "gateexplode$"..time )
+	ply:ChatPrint( "Time to Gate A explosion: "..time.." seconds" )
 
 	AddTimer( "GateExplode", 1, time, function( self, n )
 		if IsGateAOpen() then 
@@ -165,15 +160,14 @@ function ExplodeGateA( ply )
 			return
 		end
 		
-		if n % 10 == 0 then PlayerMessage( "gateexplode$"..( time - n ) ) end
 		if n + 1 == time then snd:Stop() end
 
 		if n == time then
-			BroadcastLua( 'surface.PlaySound("ambient/explosions/exp2.wav")' )
 
 			local explosion = ents.Create( "env_explosion" )
 			explosion:SetKeyValue( "spawnflags", 210 )
 			explosion:SetPos( POS_MIDDLE_GATE_A )
+			explosion:EmitSound( "ambient/explosions/exp2.wav", 130, 100, 1, CHAN_AUTO )
 			explosion:Spawn()
 			explosion:Fire( "explode", "", 0 )
 

@@ -205,6 +205,7 @@ local support_spawn = {
 SPAWN_SUPPORT_MTF = support_spawn
 SPAWN_SUPPORT_CI = support_spawn
 SPAWN_SUPPORT_BANDITS = support_spawn
+SPAWN_SUPPORT_PDUDES = support_spawn
 
 --[[-------------------------------------------------------------------------
 Chips --TODO
@@ -225,11 +226,17 @@ CHIPS = {
 			Vector( -2115.00, 1089.00, 130.00 ),
 		}
 	},*/
+	lcz_173_chamber = { --lcz pre gas open areas
+		amount = 1,
+		level = 2,
+		spawns = {
+			Vector( 1311.00, 1824.00, 129.00 ),
+		},
+	},
 	lcz_0 = { --lcz pre gas open areas
 		amount = 2,
 		level = 1,
 		spawns = {
-			Vector( 1311.00, 1824.00, 129.00 ),
 			Vector( -331.00, 808.00, 37.00 ),
 			Vector( -330.00, 1267.00, 37.00 ),
 			Vector( 173.00, -627.00, 65.00 ),
@@ -307,7 +314,7 @@ Omnitool
 ---------------------------------------------------------------------------]]
 OMNITOOLS = {
 	lcz = {
-		amount = 3,
+		amount = 4,
 		spawns = {
 			Vector( -378.00, 866.00, 37.00 ),
 			Vector( -780.00, 344.00, -127.00 ),
@@ -396,7 +403,7 @@ LOOTABLES = {
 		},
 		width = 4,
 		height = 3,
-		loot_pool = "lcz_large_loot"
+		loot_pool = "lcz_large_rare_loot"
 	},
 	{ --scp 372
 		pos = Vector( -1144, -527, 33 ),
@@ -839,11 +846,20 @@ SPAWN_AMMO_CW = {
 	Vector( 1450.00, -1550.00, 11.00 ),
 
 	--random
-	//Vector( 1364.00, -2113.00, -757.00 ),
+	Vector( 1364.00, -2113.00, -757.00 ),
 	Vector( 4956.00, 2366.00, 11.00 ),
 	Vector( 5034.00, -2263.00, 63.00 ),
+	Vector( 5199.723145, -999.860657, 15.359421 )
 }
 
+SPAWN_GRENADE_BOX = {
+	--tower
+	Vector( 59.551105, 6432.496582, 3108.031250 ),
+	--mtf
+	Vector( -2774.523438, 4152.071777, 260.031250 ),
+	--armory
+	Vector( 1258.852783, -1549.873535, 4.031250 ),
+}
 --[[-------------------------------------------------------------------------
 Spawn weapons
 ---------------------------------------------------------------------------]]
@@ -1052,24 +1068,12 @@ Alpha Warhead
 ALPHA_CARD_SPAWN = {
 	{
 		Vector( -2478.00, 1559.00, 165.00 ),
-		Vector( -1144.00, -531.00, 65.00 ),
-		Vector( 1888.00, 490.00, 18.00 ),
-		Vector( 959.00, -1033.00, -767.00 ),
-		Vector( 3171.00, -1190.00, -31.00 ),
 	},
 	{
-		Vector( 5347.00, 1245.00, -511.00 ),
-		Vector( 1979.00, 1687.00, 1.00 ),
-		Vector( 1827.00, 3297.00, -382.00 ),
 		Vector( 2019.00, 3995.00, -447.00 ),
-		Vector( 4873.00, 2782.00, -127.00 ),
 	},
 	{
 		Vector( -534.00, 4655.00, 1.00 ),
-		Vector( -800.00, 2644.00, 37.00 ),
-		Vector( -3048.00, 2953.00, 1.00 ),
-		Vector( 1391.00, 3945.00, 37.00 ),
-		Vector( 5245.00, 4601.00, -1147.00 ),
 	},
 }
 
@@ -1844,9 +1848,15 @@ Cameras
 ---------------------------------------------------------------------------]]
 CCTV = {
 	{
-		name = "Class D Cells",
-		pos = Vector( -300.880524, -936.250854, 255.968750 ),
-		ang = Angle( 32.125, 137.296, 0.000 ),
+		name = "SCP-173 Chamber",
+		pos = Vector( 821.745728, 1162.310181, 382.579590 ),
+		ang = Angle( 22.496935, 127.510841, 0.000000 ),
+		destroy_omega = true,
+	},
+	{
+		name = "SCP-914 Room",
+		pos = Vector( 1407.894287, -831.934265, 230.000427 ),
+		ang = Angle( 68.056168, -1.095147, 0.000000 ),
 		destroy_omega = true,
 	},
 	{
@@ -1862,9 +1872,39 @@ CCTV = {
 		destroy_omega = true,
 	},
 	{
+		name = "Armory Hall",
+		pos = Vector( 2111.968262, -1216.345337, 254.099365 ),
+		ang = Angle( 37.993992, -90.762985, 0.000000 ),
+		destroy_omega = true,
+	},
+	{
 		name = "LCZ Main Hall",
 		pos = Vector( 2407.205078, -124.942398, 255.968750 ),
 		ang = Angle( 39.720, -147.464, 0.000 ),
+		destroy_omega = true,
+	},
+	{
+		name = "SCP-1162 Hall",
+		pos = Vector( 1404.492920, 1152.093506, 254.591446 ),
+		ang = Angle( 40.668552, -46.028397, 0.000000 ),
+		destroy_omega = true,
+	},
+	{
+		name = "LCZ Checkpoint Exit 1",
+		pos = Vector( 2495.083740, -195.285172, 254.500198 ),
+		ang = Angle( 46.080574, 0.471478, 0.000000 ),
+		destroy_omega = true,
+	},
+	{
+		name = "LCZ Checkpoint Exit 2",
+		pos = Vector( 2479.438477, 1089.271118, 254.527618 ),
+		ang = Angle( 46.080574, 0.471478, 0.000000 ),
+		destroy_omega = true,
+	},
+	{
+		name = "HCZ Hallway 1",
+		pos = Vector( 4063.333496, -95.716171, 254.512177 ),
+		ang = Angle( 34.552784, -45.480522, 0.000000 ),
 		destroy_omega = true,
 	},
 	{
@@ -1874,15 +1914,21 @@ CCTV = {
 		destroy_omega = true,
 	},
 	{
-		name = "Omega Warhead",
-		pos = Vector( 4069.712402, 169.602386, -256.031250 ),
-		ang = Angle( 39.720, 127.464, 0.000 ),
-		destroy_omega = true,
-	},
-	{
 		name = "HCZ Tesla Gate",
 		pos = Vector( 4155.907715, 1428.488037, 255.968750 ),
 		ang = Angle( 31.360, 91.075, 0.000 ),
+		destroy_omega = true,
+	},
+	{
+		name = "SCP-096 Containment Security Room",
+		pos = Vector( 5232.041016, 3344.520020, 158.528290 ),
+		ang = Angle( 27.337036, 131.110886, 0.000000 ),
+		destroy_omega = true,
+	},
+	{
+		name = "HCZ Intersection",
+		pos = Vector( 3181.841797, 2670.610596, 126.598167 ),
+		ang = Angle( -0.031220, -135.504074, 0.000000 ),
 		destroy_omega = true,
 	},
 	{
@@ -1907,6 +1953,12 @@ CCTV = {
 		name = "Electrical Center",
 		pos = Vector( -2457.775635, 3769.280029, 127.968750 ),
 		ang = Angle( 15.060, -35.784, 0.000 ),
+		destroy_omega = true,
+	},
+	{
+		name = "Gate B Tesla",
+		pos = Vector( -2703.404053, 3007.573975, 254.518600 ),
+		ang = Angle( 22.057175, 179.783417, 0.000000 ),
 		destroy_omega = true,
 	},
 	{
